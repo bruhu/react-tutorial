@@ -13,19 +13,20 @@ class Square extends React.Component {
   }
   render() {
     return (
-      <button
-        className="square"
-        onClick={function() {
-          alert("click");
-        }}
-      >
-        {this.props.value}
+      <button className="square" onClick={() => this.setState({ value: "X" })}>
+        {this.state.value}
       </button>
     );
   }
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null)
+    };
+  }
   renderSquare(i) {
     return <Square value={i} />;
   }
